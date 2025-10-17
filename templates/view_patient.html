@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Patient Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'patient_detail.css' %}">
+
+<div class="container mt-4">
+    <h2>Patient: {{ patient.user.username }}</h2>
+
+    <hr>
+    <h4>Past Appointments</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Notes</th>
+                
+                <th>Reports</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appt in appointments %}
+            <tr>
+                <td>{{ appt.date }}</td>
+                <td>{{ appt.time }}</td>
+                <td>{{ appt.notes|default:"N/A" }}</td>
+
+               
+               
+
+                <!-- Test Reports -->
+                <td>
+                    {% with tests=appt.test_set.all %}
+                        {% if tests %}
+                            <ul class="mb-0">
+                                {% for t in tests %}
+                                    <li>
+                                        {{ t.test_name }}:
+                                        {% if t.result_file %}
+                                            <a href="{{ t.result_file.url }}" target="_blank">View Report</a>
+                                        {% else %}
+                                            <span class="text-muted">Not uploaded</span>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <span class="text-muted">No tests</span>
+                        {% endif %}
+                    {% endwith %}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book Appointment{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'book_appointment.css' %}">
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm mx-auto" style="max-width: 600px;">
+        <h2 class="text-center mb-4">Book an Appointment</h2>
+        {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+
+        <form method="POST">{% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Doctor</label>
+                <select id="doctor-select" name="doctor" class="form-select" required>
+                    <option value="">Select Doctor</option>
+                    {% for doc in doctors %}
+                    <option value="{{ doc.id }}">{{ doc.name }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <select id="date-select" name="date" class="form-select" required></select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Time</label>
+                <select id="time-select" name="time" class="form-select" required></select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Notes</label>
+                <textarea name="notes" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Proceed to Payment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+const available = {{ available_dates_times|safe }};
+const doctorSelect = document.getElementById('doctor-select');
+const dateSelect = document.getElementById('date-select');
+const timeSelect = document.getElementById('time-select');
+
+doctorSelect.addEventListener('change', function() {
+    const docId = this.value;
+    dateSelect.innerHTML = '<option value="">Select Date</option>';
+    timeSelect.innerHTML = '<option value="">Select Time</option>';
+    if(docId && available[docId]){
+        for(const date in available[docId]){
+            dateSelect.innerHTML += `<option value="${date}">${date}</option>`;
+        }
+    }
+});
+
+dateSelect.addEventListener('change', function() {
+    const docId = doctorSelect.value;
+    const date = this.value;
+    timeSelect.innerHTML = '<option value="">Select Time</option>';
+    if(docId && date && available[docId][date]){
+        for(const t of available[docId][date]){
+            timeSelect.innerHTML += `<option value="${t}">${t}</option>`;
+        }
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ doc.name }} Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'doctor_profile.css' %}">
+
+<div class="container mt-4">
+    <div class="card mx-auto">
+        <div class="card-body text-center">
+            {% if doc.photo %}
+                <img src="{{ doc.photo.url }}" class="img-fluid mb-3" alt="{{ doc.name }}" style="max-height:200px;">
+            {% else %}
+                <img src="{% static 'default_doctor.png' %}" class="img-fluid mb-3" alt="No Photo" style="max-height:200px;">
+            {% endif %}
+            <h2>{{ doc.name }}</h2>
+            <p class="card-text"><strong>Specialization:</strong> {{ doc.specialization }}</p>
+            <p class="card-text"><strong>Education:</strong> {{ doc.education }}</p>
+            <p class="card-text"><strong>Experience:</strong> {{ doc.experience }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ doc.email }}</p>
+            <p class="card-text"><strong>Phone:</strong> {{ doc.phone_number }}</p>
+            <p class="card-text"><strong>Department:</strong> {{ doc.department.name }}</p>
+
+            <!-- Feedback / Rating Section -->
+            <div class="mt-3">
+                <h4>Average Rating</h4>
+                {% with avg=doc.average_rating %}
+                    {% if avg %}
+                        <p class="mb-0">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= avg|floatformat:0 %}
+                                    <span style="color: #FFD700; font-size: 1.5rem;">&#9733;</span>
+                                {% else %}
+                                    <span style="color: #ccc; font-size: 1.5rem;">&#9733;</span>
+                                {% endif %}
+                            {% endfor %}
+                            <span class="text-muted">({{ avg|floatformat:1 }}/5)</span>
+                        </p>
+                    {% else %}
+                        <p class="text-muted">No ratings yet.</p>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

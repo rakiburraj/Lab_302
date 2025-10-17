@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Doctors in {{ department.name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'department_doctors.css' %}">
+<div class="container mt-4">
+    <h2>Doctors in {{ department.name }}</h2>
+    <div class="row">
+        {% for doctor in doctors %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if doctor.photo %}
+                    <img src="{{ doctor.photo.url }}" class="card-img-top" style="height: 250px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5>{{ doctor.name }}</h5>
+                    <p>{{ doctor.specialization }}</p>
+                    <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-success">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No doctors available in this department.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

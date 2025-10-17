@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Doctor List{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h2>Our Doctors</h2>
+        <p>Click on a doctor to view their profile.</p>
+    </div>
+    <div class="row">
+        {% for doc in doctors %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ doc.name }}</h5>
+                    <p class="card-text">{{ doc.specialization }}</p>
+                   <a href="{% url 'doctor_profile' doc.id %}" class="btn btn-success">View Profile</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

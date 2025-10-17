@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Department List{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'department.css' %}">
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h2>All Departments</h2>
+        <p>Explore our hospital departments below.</p>
+    </div>
+    <div class="row">
+        {% for dept in departments %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ dept.name }}</h5>
+                    <p class="card-text">Head: {{ dept.head }}</p>
+                   <a href="{% url 'department_detail' dept.id %}" class="btn btn-success">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

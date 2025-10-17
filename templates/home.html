@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h1>Welcome to My Hospital</h1>
+        <p>Your health, our priority. Explore our departments and meet our expert doctors.</p>
+        
+    </div>
+
+    <div class="row mt-5">
+        <!-- Our Services -->
+        <div class="col-md-6">
+            <h3>Our Services</h3>
+            <ul>
+                <li>24/7 Emergency Care</li>
+                <li>Advanced Diagnostics & Lab Tests</li>
+                <li>Specialized Surgical Departments</li>
+                <li>Patient Wellness & Preventive Care</li>
+            </ul>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="col-md-6">
+            <h3>Why Choose Us</h3>
+            <ul>
+                <li>Experienced Doctors & Medical Staff</li>
+                <li>State-of-the-Art Facilities</li>
+                <li>Personalized Patient Care</li>
+                <li>Trusted by the Community</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
