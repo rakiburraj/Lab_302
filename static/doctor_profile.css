@@ -1,0 +1,35 @@
+body {
+    background-color: #f8fff8;
+}
+.container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+}
+.card {
+    border-radius: 10px;
+    border: 1px solid #28a745;
+    background-color: #e6ffe6;
+    color: #155724;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+    max-width: 500px;
+    margin: 0 auto;
+}
+.card-title, h2, h3 {
+    color: #155724;
+    font-weight: bold;
+}
+.img-fluid {
+    border-radius: 8px;
+    border: 2px solid #28a745;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+.card-text {
+    color: #155724;
+}
+.btn-success {
+    background-color: #155724;
+    border-color: #155724;
+}
