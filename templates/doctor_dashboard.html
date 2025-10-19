@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Doctor Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'doctor_dashboard.css' %}">
+<div class="container mt-4">
+    <h2>Welcome, Dr. {{ request.user.doctor.name }}</h2>
+<a href="{% url 'edit_doctor_profile' %}" class="btn btn-info float-end mb-3">Edit Profile</a>
+    <hr>
+    <h3>Set Availability</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset style="border:1px solid #ccc; padding:10px; border-radius:5px;">
+            <legend>Select Days:</legend>
+            {% for day in days_of_week %}
+                <label style="display:block; margin-bottom:5px;">
+                    <input type="checkbox" name="days" value="{{ day.0 }}"
+                    {% if day.0 in selected_days %} checked {% endif %}>
+                    {{ day.1 }}
+                </label>
+            {% endfor %}
+        </fieldset>
+
+        <label>Max Patients:</label>
+        <input type="number" name="patient_limit" value="{{ default_patient_limit|default_if_none:'10' }}" required><br><br>
+
+        <label>Consultation Fee (BDT):</label>
+        <input type="number" name="fee" value="{{ default_fee|default_if_none:'500' }}" required><br><br>
+
+        <label>Start Time:</label>
+        <input type="time" name="start_time" value="{{ default_start_time|default:'09:00' }}" required><br><br>
+
+        <label>End Time:</label>
+        <input type="time" name="end_time" value="{{ default_end_time|default:'17:00' }}" required><br><br>
+
+        <button type="submit" class="btn btn-success">Save Availability</button>
+    </form>
+
+    <hr>
+    <h4>Your Current Availability</h4>
+    {% for avail in doctor_availability %}
+        <p>
+            <strong>{{ avail.get_day_display }}:</strong>
+            {{ avail.start_time|time:"H:i" }} - {{ avail.end_time|time:"H:i" }},
+            Max Patients: {{ avail.patient_limit }},
+            Fee: {{ avail.fee }} BDT
+        </p>
+    {% empty %}
+        <p>No availability set yet.</p>
+    {% endfor %}
+
+    <hr>
+    <h3>Upcoming Appointments</h3>
+    <table class="table table-bordered mt-3">
+        <thead class="table-light">
+            <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Notes</th>
+                <th>Prescription / Seen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appt in appointments %}
+            <tr>
+                <td>
+    <strong>
+        {{ appt.patient.name|default:appt.patient.user.get_full_name|default:appt.patient.user.username }}
+    </strong><br>
+    <a href="{% url 'view_patient' appt.patient.id %}" class="btn btn-sm btn-info mt-1">View Profile</a>
+</td>
+
+                <td>{{ appt.date }}</td>
+                <td>{{ appt.time|time:"H:i" }}</td>
+                <td>{{ appt.notes|default:"N/A" }}</td>
+                <td>
+                    <!-- Prescription Section -->
+                    {% if appt.prescription %}
+                        <a href="{{ appt.prescription.prescription_image.url }}" target="_blank">View</a>
+                        {% if appt.prescription.notes %}
+                            <p class="small mt-1">{{ appt.prescription.notes|truncatewords:10 }}</p>
+                        {% endif %}
+                    {% else %}
+                        <form method="post" action="{% url 'add_prescription' appt.id %}" enctype="multipart/form-data" class="mb-1">
+                            {% csrf_token %}
+                            <input type="file" name="prescription_image" required>
+                            <button type="submit" class="btn btn-sm btn-success mt-1">Upload</button>
+                        </form>
+                    {% endif %}
+
+                    <!-- Seen Section -->
+                    {% if not appt.seen %}
+                        <form method="post" action="{% url 'mark_seen' appt.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-primary mt-1">Mark as Seen</button>
+                        </form>
+                    {% else %}
+                        <span class="badge bg-success mt-1">Seen</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No upcoming appointments.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

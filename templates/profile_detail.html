@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'patient_profile.css' %}">
+<div class="container mt-4">
+
+    {% if profile %}
+        <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+            <div class="card-body text-center">
+                <!-- Profile Picture -->
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" class="rounded-circle mb-3" width="120" height="120">
+                {% else %}
+                    <img src="https://via.placeholder.com/120" class="rounded-circle mb-3">
+                {% endif %}
+
+                <!-- Profile Info -->
+                <h4 class="card-title">{{ profile.name }}</h4>
+                <p class="card-text"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
+                <p class="card-text"><strong>Age:</strong> {{ profile.age }}</p>
+                <p class="card-text"><strong>Blood Group:</strong> {{ profile.blood_group }}</p>
+
+                <!-- Edit Profile Button -->
+                <a href="{% url 'edit_patient_profile' %}" class="btn btn-warning mt-3">Edit Profile</a>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="text-center">
+            <p>You have not created your profile yet.</p>
+            <a href="{% url 'create_patient_profile' %}" class="btn btn-primary">Create Profile</a>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

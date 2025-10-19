@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}View Questions & Replies{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'send_message.css' %}">
+
+<div class="container mt-5" style="max-width: 700px;">
+    <h3 class="text-center mb-4">Questions & Admin Replies</h3>
+
+    {% if messages_list %}
+        <div class="accordion" id="messagesAccordion">
+            {% for msg in messages_list %}
+                <div class="accordion-item mb-3">
+                    <h2 class="accordion-header" id="heading{{ msg.id }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ msg.id }}" aria-expanded="false" aria-controls="collapse{{ msg.id }}">
+                            Question #{{ forloop.counter }}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ msg.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ msg.id }}" data-bs-parent="#messagesAccordion">
+                        <div class="accordion-body">
+                            <p><strong>Question:</strong> {{ msg.message }}</p>
+                            {% if msg.reply %}
+                                <hr>
+                                <p><strong>Answer:</strong> {{ msg.reply }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted text-center">No replies yet. Please check back later.</p>
+    {% endif %}
+</div>
+{% endblock %}

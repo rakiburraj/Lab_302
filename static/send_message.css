@@ -1,0 +1,90 @@
+/* Body background */
+body {
+    background-color: #f8fff8; /* light green */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container / Card */
+.container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08); /* light green shadow */
+    margin-bottom: 3rem;
+}
+
+/* Jumbotron Header */
+.jumbotron {
+    background-color: #e6ffe6; /* slightly darker green */
+    color: #155724; /* dark green text */
+    border-radius: 12px;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 8px rgba(21,87,36,0.08);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Headings */
+h1, h3 {
+    color: #155724; /* dark green */
+}
+
+/* Buttons */
+.btn-primary {
+    /* background-color: #28a745; green */
+    border-color: #28a745;
+    transition: 0.3s;
+}
+.btn-primary:hover {
+    background-color: #218838; /* darker green on hover */
+    border-color: #1e7e34;
+}
+
+.btn-success {
+    background-color: #155724; /* dark green */
+    border-color: #155724;
+}
+.btn-success:hover {
+    background-color: #0f3e1e;
+    border-color: #0f3e1e;
+}
+
+/* Form Inputs */
+input[type="text"], textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input focus effect */
+input[type="text"]:focus, textarea:focus {
+    border-color: #28a745; /* green border */
+    box-shadow: 0 0 8px rgba(40,167,69,0.2);
+    outline: none;
+}
+
+/* Textarea auto-resize */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Form labels */
+label {
+    font-weight: 600;
+    color: #155724; /* dark green */
+}
+
+/* Success messages */
+.alert-success {
+    background-color: #d4edda; /* light green */
+    border-color: #c3e6cb;
+    color: #155724;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}

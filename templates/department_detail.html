@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ department.name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'department.css' %}">
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h2>{{ department.name }}</h2>
+        <p>Head: {{ department.head }}</p>
+    </div>
+    <h3 class="mt-4 mb-3">Doctors in this Department</h3>
+    <div class="row">
+        {% for doc in doctors %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ doc.name }}</h5>
+                    <p class="card-text">{{ doc.specialization }}</p>
+                    <a href="{% url 'doctor_profile' doc.id %}" class="btn btn-success">View Profile</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No doctors in this department.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
