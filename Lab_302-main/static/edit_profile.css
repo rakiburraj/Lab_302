@@ -1,0 +1,69 @@
+/* edit_profile.css */
+
+/* Body background */
+body {
+    background-color: #f8fff8;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(40, 167, 69, 0.1);
+}
+
+/* Headings */
+h2 {
+    color: #155724;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Form elements */
+form label {
+    font-weight: 500;
+    color: #155724;
+}
+
+form input,
+form select,
+form textarea {
+    border-radius: 8px;
+    border: 1px solid #c1e0c1;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    width: 100%;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1e6e30;
+    border-color: #155724;
+}
+
+/* Paragraphs / small text */
+small {
+    color: #555;
+}

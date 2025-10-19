@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Patient Login{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'patient_login.css' %}">
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h2>Patient Login</h2>
+        <p>Enter your credentials to log in.</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+</div>
+{% endblock %}

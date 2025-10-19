@@ -1,0 +1,113 @@
+/* doctor_dashboard.css */
+
+/* Body background */
+body {
+    background-color: #f8fff8;
+    font-family: Arial, sans-serif;
+}
+
+/* Main container */
+.container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+    margin-top: 3rem;
+}
+
+/* Headings */
+h2, h3, h4 {
+    color: #155724;
+}
+
+/* Fieldsets */
+fieldset {
+    border: 1px solid #c1e0c1;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    color: #155724;
+}
+
+/* Form inputs */
+input[type="number"], input[type="time"], input[type="text"], select {
+    border-radius: 8px;
+    border: 1px solid #c1e0c1;
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+/* File inputs */
+input[type="file"] {
+    border-radius: 8px;
+    border: 1px solid #c1e0c1;
+    padding: 0.4rem 0.6rem;
+}
+
+/* Buttons */
+button.btn-success {
+    background-color: #155724;
+    border-color: #155724;
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+}
+
+button.btn-success:hover {
+    background-color: #0f3d16;
+    border-color: #0b2a0f;
+}
+
+button.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 0.5rem 1rem;
+}
+
+button.btn-primary:hover {
+    background-color: #1e6e30;
+    border-color: #155724;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #e6ffe6;
+    color: #155724;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fff8;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.6em;
+}
+
+/* Misc spacing */
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}

@@ -1,0 +1,46 @@
+/* pay_appointment.css */
+
+/* Body background */
+body {
+    background-color: #f8fff8;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(40, 167, 69, 0.1);
+}
+
+/* Headings */
+h2 {
+    color: #155724;
+    margin-bottom: 1rem;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1rem;
+    color: #155724;
+    margin-bottom: 0.75rem;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #1e6e30;
+    border-color: #155724;
+}

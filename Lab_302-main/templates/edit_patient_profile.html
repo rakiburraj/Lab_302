@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'edit_patient_profile.css' %}">
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Edit Your Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

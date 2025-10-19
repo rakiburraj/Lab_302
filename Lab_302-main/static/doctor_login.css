@@ -1,0 +1,71 @@
+/* doctor_login.css */
+
+/* Body background */
+body {
+    background-color: #f8fff8;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 3rem auto;
+    box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+}
+
+/* Headings */
+h2 {
+    color: #155724;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Form labels */
+label {
+    font-weight: 600;
+    color: #155724;
+}
+
+/* Form inputs */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #c1e0c1;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+button.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button.btn-primary:hover {
+    background-color: #1e6e30;
+    border-color: #155724;
+}
+
+/* Alerts */
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background-color: #ffe6e6;
+    color: #a94442;
+    border: 1px solid #f5c6cb;
+}

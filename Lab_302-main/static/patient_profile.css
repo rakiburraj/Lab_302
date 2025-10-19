@@ -1,0 +1,83 @@
+/* patient_profile.css */
+
+/* Body background */
+body {
+    background-color: #f8fff8;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
+/* Profile card */
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(40, 167, 69, 0.1);
+    padding: 2rem;
+}
+
+/* Card body text */
+.card-body {
+    text-align: center;
+}
+
+/* Profile picture */
+.card img.rounded-circle {
+    border: 3px solid #28a745;
+    object-fit: cover;
+}
+
+/* Headings */
+.card-title {
+    color: #155724;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Card text */
+.card-text {
+    color: #155724;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Buttons */
+.btn-primary, .btn-warning {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1e6e30;
+    border-color: #155724;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #c69500;
+}
+
+/* Fallback text when profile does not exist */
+.text-center p {
+    font-size: 1rem;
+    color: #155724;
+    margin-bottom: 1rem;
+}

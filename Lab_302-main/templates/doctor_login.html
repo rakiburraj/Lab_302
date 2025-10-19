@@ -1,0 +1,26 @@
+<!-- templates/doctor_login.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Doctor Login{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'doctor_login.css' %}">
+<div class="container mt-4">
+    <h2>Doctor Login</h2>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+{% endblock %}

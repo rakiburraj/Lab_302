@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Pay Appointment{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'pay_appointment.css' %}">
+<div class="container mt-4">
+    <h2>Pay for Appointment</h2>
+    <p><strong>Patient:</strong> {{ appointment.patient.user.username }}</p>
+    <p><strong>Doctor:</strong> {{ appointment.doctor.name }}</p>  <!-- <-- Use it here -->
+    <p><strong>Date:</strong> {{ appointment.date }}</p>
+    <p><strong>Time:</strong> {{ appointment.time|time:"H:i" }}</p>
+    <p><strong>Notes:</strong> {{ appointment.notes|default:"N/A" }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Pay Now</button>
+    </form>
+</div>
+{% endblock %}
